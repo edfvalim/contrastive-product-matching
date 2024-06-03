@@ -11,11 +11,11 @@ AUG=$4
 python run_pretraining_ssv.py \
     --do_train \
 	--dataset_name=abt-buy \
-    --train_file ../../contrastive-product-matching/data/processed/abt-buy/contrastive/abt-buy-train.pkl.gz \
-	--id_deduction_set ../../contrastive-product-matching/data/interim/abt-buy/abt-buy-train.json.gz \
+    --train_file ../../data/processed/abt-buy/contrastive/abt-buy-train.pkl.gz \
+	--id_deduction_set ../../data/interim/abt-buy/abt-buy-train.json.gz \
 	--tokenizer="roberta-base" \
 	--grad_checkpoint=True \
-    --output_dir ../../contrastive-product-matching/reports/contrastive/abtbuy-ssv-$AUG$BATCH-$LR-$TEMP-roberta-base/ \
+    --output_dir ../../reports/contrastive/abtbuy-ssv-$AUG$BATCH-$LR-$TEMP-roberta-base/ \
 	--temperature=$TEMP \
 	--per_device_train_batch_size=$BATCH \
 	--learning_rate=$LR \
