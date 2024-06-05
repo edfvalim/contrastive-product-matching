@@ -10,17 +10,17 @@ TEMP=$3
 SIZE=$4
 AUG=$5
 PREAUG=$6
-python run_finetune_siamese.py \
-	--model_pretrained_checkpoint ../../reports/contrastive/computers-$SIZE-$PREAUG$BATCH-$LR-$TEMP-roberta-base/pytorch_model.bin \
+CUDA_VISIBLE_DEVICES=0 python run_finetune_siamese.py \
+	--model_pretrained_checkpoint /home/eduardovalim/Documents/constrastive-product-matching/reports/contrastive/computers-$SIZE-$PREAUG$BATCH-$LR-$TEMP-roberta-base/pytorch_model.bin \
     --do_train \
-    --train_file ../../data/interim/wdc-lspc/training-sets/preprocessed_computers_train_$SIZE.pkl.gz \
+    --train_file /home/eduardovalim/Documents/constrastive-product-matching/data/interim/wdc-lspc/training-sets/preprocessed_computers_train_$SIZE.pkl.gz \
 	--train_size=$SIZE \
-	--validation_file ../../data/interim/wdc-lspc/training-sets/preprocessed_computers_train_$SIZE.pkl.gz \
-	--test_file ../../data/interim/wdc-lspc/gold-standards/preprocessed_computers_gs.pkl.gz \
+	--validation_file /home/eduardovalim/Documents/constrastive-product-matching/data/interim/wdc-lspc/training-sets/preprocessed_computers_train_$SIZE.pkl.gz \
+	--test_file /home/eduardovalim/Documents/constrastive-product-matching/data/interim/wdc-lspc/gold-standards/preprocessed_computers_gs.pkl.gz \
 	--evaluation_strategy=epoch \
 	--tokenizer="roberta-base" \
 	--grad_checkpoint=True \
-    --output_dir ../../reports/contrastive-ft-siamese/computers-$SIZE-$AUG$BATCH-$PREAUG$LR-$TEMP-frozen-roberta-base/ \
+    --output_dir /home/eduardovalim/Documents/constrastive-product-matching/reports/contrastive-ft-siamese/computers-$SIZE-$AUG$BATCH-$PREAUG$LR-$TEMP-frozen-roberta-base/ \
 	--per_device_train_batch_size=64 \
 	--learning_rate=5e-05 \
 	--weight_decay=0.01 \

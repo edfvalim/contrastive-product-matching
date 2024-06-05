@@ -9,13 +9,13 @@ LR=$2
 TEMP=$3
 SIZE=$4
 AUG=$5
-python run_pretraining_ssv.py \
+CUDA_VISIBLE_DEVICES=0 python run_pretraining_ssv.py \
     --do_train \
-    --train_file ../../data/processed/wdc-lspc/contrastive/pre-train/computers/computers_train_$SIZE.pkl.gz \
-	--id_deduction_set ../../data/raw/wdc-lspc/training-sets/computers_train_$SIZE.json.gz \
+    --train_file /home/eduardovalim/Documents/constrastive-product-matching/data/processed/wdc-lspc/contrastive/pre-train/computers/computers_train_$SIZE.pkl.gz \
+	--id_deduction_set /home/eduardovalim/Documents/constrastive-product-matching/data/raw/wdc-lspc/training-sets/computers_train_$SIZE.json.gz \
 	--tokenizer="roberta-base" \
 	--grad_checkpoint=True \
-    --output_dir ../../reports/contrastive/computers-ssv-$SIZE-$AUG$BATCH-$LR-$TEMP-roberta-base/ \
+    --output_dir /home/eduardovalim/Documents/constrastive-product-matching/reports/contrastive/computers-ssv-$SIZE-$AUG$BATCH-$LR-$TEMP-roberta-base/ \
 	--temperature=$TEMP \
 	--per_device_train_batch_size=$BATCH \
 	--learning_rate=$LR \

@@ -9,18 +9,18 @@ LR=$2
 TEMP=$3
 AUG=$4
 PREAUG=$5
-python run_finetune_siamese.py \
-	--model_pretrained_checkpoint ../../reports/contrastive/abtbuy-ssv-$PREAUG$BATCH-$LR-$TEMP-roberta-base/pytorch_model.bin \
+CUDA_VISIBLE_DEVICES=0 python run_finetune_siamese.py \
+	--model_pretrained_checkpoint /home/eduardovalim/Documents/constrastive-product-matching/reports/contrastive/abtbuy-ssv-$PREAUG$BATCH-$LR-$TEMP-roberta-base/pytorch_model.bin \
     --do_train \
 	--dataset_name=abt-buy \
 	--frozen=False \
-    --train_file ../../data/interim/abt-buy/abt-buy-train.json.gz \
-	--validation_file ../../data/interim/abt-buy/abt-buy-train.json.gz \
-	--test_file ../../data/interim/abt-buy/abt-buy-gs.json.gz \
+    --train_file /home/eduardovalim/Documents/constrastive-product-matching/data/interim/abt-buy/abt-buy-train.json.gz \
+	--validation_file /home/eduardovalim/Documents/constrastive-product-matching/data/interim/abt-buy/abt-buy-train.json.gz \
+	--test_file /home/eduardovalim/Documents/constrastive-product-matching/data/interim/abt-buy/abt-buy-gs.json.gz \
 	--evaluation_strategy=epoch \
 	--tokenizer="roberta-base" \
 	--grad_checkpoint=True \
-    --output_dir ../../reports/contrastive-ft-siamese/abtbuy-ssv-$AUG$BATCH-$PREAUG$LR-$TEMP-unfrozen-roberta-base/ \
+    --output_dir /home/eduardovalim/Documents/constrastive-product-matching/reports/contrastive-ft-siamese/abtbuy-ssv-$AUG$BATCH-$PREAUG$LR-$TEMP-unfrozen-roberta-base/ \
 	--per_device_train_batch_size=64 \
 	--learning_rate=5e-05 \
 	--weight_decay=0.01 \

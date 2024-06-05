@@ -8,14 +8,14 @@ BATCH=$1
 LR=$2
 TEMP=$3
 AUG=$4
-python run_pretraining_ssv.py \
+CUDA_VISIBLE_DEVICES=0 python run_pretraining_ssv.py \
     --do_train \
 	--dataset_name=amazon-google \
-    --train_file ../../data/processed/amazon-google/contrastive/amazon-google-train.pkl.gz \
-	--id_deduction_set ../../data/interim/amazon-google/amazon-google-train.json.gz \
+    --train_file /home/eduardovalim/Documents/constrastive-product-matching/data/processed/amazon-google/contrastive/amazon-google-train.pkl.gz \
+	--id_deduction_set /home/eduardovalim/Documents/constrastive-product-matching/data/interim/amazon-google/amazon-google-train.json.gz \
 	--tokenizer="roberta-base" \
 	--grad_checkpoint=True \
-    --output_dir ../../reports/contrastive/amazongoogle-ssv-$AUG$BATCH-$LR-$TEMP-roberta-base/ \
+    --output_dir /home/eduardovalim/Documents/constrastive-product-matching/reports/contrastive/amazongoogle-ssv-$AUG$BATCH-$LR-$TEMP-roberta-base/ \
 	--temperature=$TEMP \
 	--per_device_train_batch_size=$BATCH \
 	--learning_rate=$LR \
