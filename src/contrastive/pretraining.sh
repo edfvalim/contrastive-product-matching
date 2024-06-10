@@ -20,7 +20,6 @@ run_command() {
         end_time=$(date +"%Y-%m-%d %H:%M:%S")
         echo "Completed: $command"
         echo "End Time: $end_time"
-        echo "Elapsed Time: $(($(date +%s -d "$end_time") - $(date +%s -d "$start_time")))"
         echo "======================================================="
     fi
 }
